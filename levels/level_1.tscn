@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvkef3qje1a4m"]
+[gd_scene load_steps=10 format=3 uid="uid://cvkef3qje1a4m"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_ag60e"]
 [ext_resource type="Texture2D" uid="uid://cogkn1dmob031" path="res://assets/background.png" id="1_g5ie7"]
 [ext_resource type="PackedScene" uid="uid://0yuva13hy53y" path="res://entities/launcher.tscn" id="2_pvaui"]
 [ext_resource type="PackedScene" uid="uid://chpqxcuktjtyc" path="res://entities/box.tscn" id="3_xichm"]
 [ext_resource type="Script" path="res://levels/EndBox.gd" id="5_5w4kt"]
+[ext_resource type="PackedScene" uid="uid://cay0e6o7giptp" path="res://right_flipper.tscn" id="6_8jdlb"]
+[ext_resource type="Script" path="res://right_flipper.gd" id="7_bt8ys"]
+[ext_resource type="Script" path="res://left_flipper.gd" id="8_h27yq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onqfy"]
 size = Vector2(93, 35)
@@ -45,6 +48,16 @@ shape = SubResource("RectangleShape2D_onqfy")
 
 [node name="Timer" type="Timer" parent="EndBox"]
 one_shot = true
+
+[node name="RightFlipper" parent="." instance=ExtResource("6_8jdlb")]
+position = Vector2(375, 963)
+rotation = -0.543533
+script = ExtResource("7_bt8ys")
+
+[node name="LeftFlipper" parent="." instance=ExtResource("6_8jdlb")]
+position = Vector2(234, 961)
+rotation = 3.64865
+script = ExtResource("8_h27yq")
 
 [connection signal="body_entered" from="EndBox" to="EndBox" method="_on_body_entered"]
 [connection signal="timeout" from="EndBox/Timer" to="EndBox" method="_on_timer_timeout"]

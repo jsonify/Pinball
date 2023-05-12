@@ -29,8 +29,6 @@ func on_ball_died():
 		current_ball.queue_free()
 
 	if ball_count > 0:	
-#	if balls.size() > 0:
-		# Instantiate a new ball and add it to the scene
 		new_ball()
 	else:
 		# game over logic

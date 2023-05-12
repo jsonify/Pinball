@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cay0e6o7giptp"]
+
+[ext_resource type="Script" path="res://flipper.gd" id="1_sd8bs"]
+[ext_resource type="Texture2D" uid="uid://cidg2l2i3iv4o" path="res://icon.svg" id="2_ke86h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ublcf"]
+size = Vector2(62, 6)
+
+[node name="RightFlipper" type="CharacterBody2D"]
+scale = Vector2(-1, -1)
+script = ExtResource("1_sd8bs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(21, 0)
+scale = Vector2(0.48, 0.0399994)
+texture = ExtResource("2_ke86h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21, 0)
+shape = SubResource("RectangleShape2D_ublcf")
+
+[node name="Marker2D" type="Marker2D" parent="."]
