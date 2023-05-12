@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://fl2v7lt4nfbi"]
+
+[ext_resource type="Script" path="res://entities/boxes/shape.gd" id="1_xyfg5"]
+[ext_resource type="Texture2D" uid="uid://bmmj6l2v537um" path="res://assets/block.png" id="2_soofe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xe8xq"]
+size = Vector2(32, 32)
+
+[node name="Box32" type="StaticBody2D" groups=["shape"]]
+script = ExtResource("1_xyfg5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_soofe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xe8xq")
+
+[node name="LabelNode" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="LabelNode"]
+offset_left = -19.0
+offset_top = -14.0
+offset_right = 21.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

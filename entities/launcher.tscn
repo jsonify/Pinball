@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://0yuva13hy53y"]
+
+[ext_resource type="Texture2D" uid="uid://bmmj6l2v537um" path="res://assets/block.png" id="1_10j8j"]
+[ext_resource type="Script" path="res://entities/launch_button.gd" id="2_ssa2b"]
+
+[sub_resource type="Theme" id="Theme_gsijh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qr25h"]
+texture = ExtResource("1_10j8j")
+
+[node name="Launcher" type="Node2D"]
+
+[node name="LaunchButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = SubResource("Theme_gsijh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qr25h")
+text = "Launch"
+script = ExtResource("2_ssa2b")

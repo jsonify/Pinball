@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvkef3qje1a4m"]
+
+[ext_resource type="Script" path="res://levels/level_1.gd" id="1_ag60e"]
+[ext_resource type="Texture2D" uid="uid://cogkn1dmob031" path="res://assets/background.png" id="1_g5ie7"]
+[ext_resource type="PackedScene" uid="uid://0yuva13hy53y" path="res://entities/launcher.tscn" id="2_pvaui"]
+[ext_resource type="PackedScene" uid="uid://chpqxcuktjtyc" path="res://entities/box.tscn" id="3_xichm"]
+[ext_resource type="Script" path="res://levels/EndBox.gd" id="5_5w4kt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onqfy"]
+size = Vector2(93, 35)
+
+[node name="Level_1" type="Node2D"]
+script = ExtResource("1_ag60e")
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+
+[node name="Background" type="Sprite2D" parent="Walls/StaticBody2D"]
+visible = false
+position = Vector2(308, 577)
+texture = ExtResource("1_g5ie7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D"]
+position = Vector2(213, 217)
+polygon = PackedVector2Array(371, 801, 372, 38, 369, 8, 366, -5, 360, -20, 353, -33, 345, -46, 336, -58, 324, -71, 288, -99, 252, -121, 217, -136, 180, -145, 144, -151, 109, -151, 76, -149, 44, -144, 18, -137, -8, -128, -34, -115, -63, -96, -87, -75, -110, -44, -121, -27, -133, 3, -137, 20, -139, 44, -135, 82, -121, 118, -88, 177, -56, 233, -49, 246, -49, 257, -58, 269, -111, 336, -114, 344, -114, 351, -112, 361, -64, 429, -62, 432, -59, 436, -58, 440, -58, 445, -58, 448, -114, 531, -115, 534, -116, 538, -116, 544, -116, 654, -115, 660, -114, 664, -112, 666, -110, 668, -104, 672, 66, 765, 70, 767, 71, 770, 72, 774, 73, 825, -182, 825, -181, -196, 392, -195, 393, 825, 114, 825, 114, 774, 115, 770, 117, 768, 120, 766, 130, 760, 295, 672, 300, 668, 304, 665, 305, 661, 305, 654, 305, 535, 295, 521, 256, 463, 248, 450, 246, 442, 247, 436, 249, 431, 256, 422, 303, 355, 304, 351, 305, 346, 305, 342, 303, 338, 300, 334, 295, 328, 240, 257, 238, 254, 238, 250, 238, 101, 239, 96, 242, 92, 248, 82, 284, 27, 290, 18, 294, 14, 299, 8, 304, 6, 311, 4, 321, 12, 323, 21, 325, 35, 325, 71, 325, 800)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls/StaticBody2D"]
+polygon = PackedVector2Array(498, 183, 494, 186, 488, 191, 479, 202, 432, 271, 429, 275, 425, 276, 421, 275, 419, 271, 419, 267, 464, 201, 474, 185, 482, 178, 488, 174, 471, 156, 452, 145, 429, 132, 406, 123, 379, 116, 353, 112, 330, 111, 300, 111, 273, 117, 242, 126, 218, 137, 191, 154, 175, 168, 161, 185, 147, 206, 140, 222, 135, 244, 134, 260, 134, 282, 138, 298, 142, 310, 152, 329, 206, 421, 208, 425, 208, 428, 206, 431, 203, 432, 199, 431, 193, 423, 134, 322, 129, 311, 124, 295, 120, 277, 121, 251, 126, 223, 137, 199, 149, 179, 166, 161, 186, 144, 208, 130, 231, 119, 252, 112, 272, 107, 292, 103, 315, 101, 339, 100, 368, 102, 393, 107, 414, 113, 437, 122, 457, 133, 476, 146, 493, 166)
+disabled = true
+
+[node name="Launcher" parent="." instance=ExtResource("2_pvaui")]
+z_index = 10
+position = Vector2(536, 1096)
+
+[node name="Box2" parent="." instance=ExtResource("3_xichm")]
+position = Vector2(561, 973)
+
+[node name="EndBox" type="Area2D" parent="."]
+script = ExtResource("5_5w4kt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndBox"]
+position = Vector2(308.5, 1085.5)
+shape = SubResource("RectangleShape2D_onqfy")
+
+[node name="Timer" type="Timer" parent="EndBox"]
+one_shot = true
+
+[connection signal="body_entered" from="EndBox" to="EndBox" method="_on_body_entered"]
+[connection signal="timeout" from="EndBox/Timer" to="EndBox" method="_on_timer_timeout"]

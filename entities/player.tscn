@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://btgv25isiuixd"]
+
+[ext_resource type="Script" path="res://entities/player.gd" id="1_fs4x1"]
+[ext_resource type="Texture2D" uid="uid://f5m8sek40v2" path="res://assets/ball-happy.png" id="1_jb6nn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwulq"]
+radius = 16.0
+
+[node name="Player" type="RigidBody2D"]
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_fs4x1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_jb6nn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lwulq")
